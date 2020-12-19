@@ -28,8 +28,32 @@ function sendRecieveAppend() {
     console.log('in send')
     userMath.intTwo = Number(intString);
     console.log(userMath);
-    clearDisplay()
+    $.ajax({
+        url: '/calculate',
+        type: 'POST',
+        data: userMath
+    }).then(function (response) {
+        console.log(response);
+        clearAll()
+        getAndAppendDom();
+    })
+}
 
+function getAndAppendDom() {
+    $.ajax({
+        url: '/calculate',
+        type: 'GET',
+    }).then(function (response) {
+        console.log(response)
+        appendDom(response)
+    })
+}
+
+function appendDom(obj) {
+    $('#target').empty();
+    for (equ of obj) {
+        $('#target').append(`<p>${equ.intOne} ${equ.operator} ${equ.intTwo} = ${equ.result}`)
+    }
 }
 //clears DOM calculator display, resets intString to empty string, resets user math
 function clearAll() {
@@ -60,7 +84,6 @@ function addToObject() {
 //equal should append mathObject.intTwo with new intString, then clear intString
 
 function appendDisplayBeforeSubmit() {
-    console.log('in click')
     let printData = $(this).data('print')
     console.log(printData)
     $('#displayField').append(printData)
