@@ -10,14 +10,15 @@ function readyNow() {
 }
 
 //stores all number button clicks as strings between operator presses
-let intString = "";
+let intString = '';
 
 //stores intString and operator after operator press, if no operator is pressed,
 //this object goes to the data and just returns the number entered
 let userMath = {
-    intOne: 0,
-    intTwo: 0,
-    operator: "=",
+    intOne: '',
+    intTwo: '',
+    operator: '=',
+    intTwoPresent: false,
     // total: 0,
 }
 
@@ -25,8 +26,18 @@ let userMath = {
 //is recalled with GET request in getAndAppendDom
 function sendRecieveAppend() {
     console.log('in send')
+    if (intString === '') {
+        alert('Please enter a valid equation')
+        clearAll();
+        return;
+    }
     userMath.intTwo = Number(intString);
+    userMath.intTwoPresent = true;
     console.log(userMath);
+    if (userMath.intOne === '' || userMath.intTwoPresent === false) {
+        alert('Please enter a valid equation');
+        clearAll();
+    }
     $.ajax({
         url: '/calculate',
         type: 'POST',
@@ -60,12 +71,12 @@ function appendDom(obj) {
 //clears DOM calculator display, resets intString to empty string, resets user math
 function clearAll() {
     clearDisplay()
-    intString = "";
+    intString = '';
     userMath = {
-        intOne: 0,
-        intTwo: 0,
+        intOne: '',
+        intTwo: '',
         operator: "=",
-        // total: 0,
+        intTwoPresent: false,
     }
 }
 
@@ -77,11 +88,17 @@ function concatGlobal() {
 }
 //operator should append mathObject.intOne with intString, then clear intString
 function addToObject() {
+    if (intString === '') {
+        alert('Please enter a valid equation')
+        clearAll()
+        return
+    }
     userMath.intOne = Number(intString);
     // userMath.total += Number(intString);
     userMath.operator = $(this).data('print');
     console.log(userMath);
-    intString = "";
+    intString = '';
+    userMath.intTwoPresent = false
 }
 //equal should append mathObject.intTwo with new intString, then clear intString
 
@@ -95,11 +112,12 @@ function appendDisplayBeforeSubmit() {
 //clears the DOM calculator display and resets global variables
 function clearAll() {
     clearDisplay()
-    intString = "";
+    intString = '';
     userMath = {
-        intOne: 0,
-        intTwo: 0,
-        operator: "=",
+        intOne: '',
+        intTwo: '',
+        operator: '=',
+        intTwoPresent: false,
         // total: 0,
     }
 }
