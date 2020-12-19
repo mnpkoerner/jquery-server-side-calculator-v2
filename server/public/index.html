@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vendors/jquery-3.5.1.js"></script>
+    <script src="scripts/client.js"></script>
+    <link href="styles/style.css" rel="stylesheet">
+
+
+    <title>Calculator Version Two</title>
+</head>
+
+<body>
+    <header>
+        <h1>Grandpappy's Dusty Calculator</h1>
+    </header>
+    <main>
+        <div id="display">
+            <span id="displayField"></span><button id="clearButton">c</button>
+        </div>
+        <div id="rowOne">
+            <button id="seven" class="number" data-print="7">7</button>
+            <button id="eight" class="number" data-print="8">8</button>
+            <button id="nine" class="number" data-print="9">9</button>
+            <button id="add" class="operator" data-print="+">+</button>
+        </div>
+        <div id="rowTwo">
+            <button id="four" class="number" data-print="4">4</button>
+            <button id="five" class="number" data-print="5">5</button>
+            <button id="six" class="number" data-print="6">6</button>
+            <button id="subtract" class="operator" data-print="-">-</button>
+        </div>
+        <div id="rowThree">
+            <button id="one" class="number" data-print="1">1</button>
+            <button id="two" class="number" data-print="2">2</button>
+            <button id="three" class="number" data-print="3">3</button>
+            <button id="multiply" class="operator" data-print="*">*</button>
+        </div>
+        <div id="rowFour">
+            <button id="zero" class="number" data-print="0">0</button>
+            <button id="decimal" class="number" data-print=".">.</button>
+            <button id="submitButton">=</button>
+            <button id="divide" class="operator" data-print="/">/</button>
+        </div>
+
+
+    </main>
+</body>
+
+</html>
