@@ -4,7 +4,7 @@ function readyNow() {
     console.log('ready')
     $('button').on('click', appendDisplayBeforeSubmit);
     $('#submitButton').on('click', sendRecieveAppend)
-    $('clearButton').on('click', clearAll);
+    $('#clearButton').on('click', clearAll);
     $('.number').on('click', concatGlobal)
     $('.operator').on('click', addToObject)
 }
@@ -18,7 +18,7 @@ let userMath = {
     intOne: 0,
     intTwo: 0,
     operator: "=",
-    total: 0,
+    // total: 0,
 }
 
 //clear button needs to clear #displayField and reset global variable to 0
@@ -31,7 +31,7 @@ function sendRecieveAppend() {
     clearDisplay()
 
 }
-
+//clears DOM calculator display, resets intString to empty string, resets user math
 function clearAll() {
     clearDisplay()
     intString = "";
@@ -39,7 +39,7 @@ function clearAll() {
         intOne: 0,
         intTwo: 0,
         operator: "=",
-        total: 0,
+        // total: 0,
     }
 }
 
@@ -52,9 +52,10 @@ function concatGlobal() {
 //operator should append mathObject.intOne with intString, then clear intString
 function addToObject() {
     userMath.intOne = Number(intString);
+    // userMath.total += Number(intString);
     userMath.operator = $(this).data('print');
     console.log(userMath);
-    intString = 0;
+    intString = "";
 }
 //equal should append mathObject.intTwo with new intString, then clear intString
 
@@ -74,10 +75,10 @@ function clearAll() {
         intOne: 0,
         intTwo: 0,
         operator: "=",
-        total: 0,
+        // total: 0,
     }
 }
 //clears characters off the DOM calculator display
 function clearDisplay() {
-    $('#displayField').append('')
+    $('#displayField').empty();
 }
