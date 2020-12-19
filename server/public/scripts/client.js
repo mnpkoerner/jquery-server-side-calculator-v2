@@ -21,9 +21,8 @@ let userMath = {
     // total: 0,
 }
 
-//clear button needs to clear #displayField and reset global variable to 0
-//equal button needs to send data to server, math happens on server, gets results and appends the dom
-
+//sends userMath to server, where calculations happen and finished math
+//is recalled with GET request in getAndAppendDom
 function sendRecieveAppend() {
     console.log('in send')
     userMath.intTwo = Number(intString);
@@ -54,6 +53,9 @@ function appendDom(obj) {
     for (equ of obj) {
         $('#target').append(`<p>${equ.intOne} ${equ.operator} ${equ.intTwo} = ${equ.result}`)
     }
+    $('#totalTarget').empty();
+    $('#totalTarget').append(`Result: ${equ.result}`);
+
 }
 //clears DOM calculator display, resets intString to empty string, resets user math
 function clearAll() {
