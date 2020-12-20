@@ -18,7 +18,7 @@ let userMath = {
     intOne: '',
     intTwo: '',
     operator: '=',
-    intTwoPresent: false,
+
     // total: 0,
 }
 
@@ -32,9 +32,8 @@ function sendRecieveAppend() {
         return;
     }
     userMath.intTwo = Number(intString);
-    userMath.intTwoPresent = true;
     console.log(userMath);
-    if (userMath.intOne === '' || userMath.intTwoPresent === false) {
+    if (userMath.intOne === '') {
         alert('Please enter a valid equation');
         clearAll();
     }
@@ -76,7 +75,6 @@ function clearAll() {
         intOne: '',
         intTwo: '',
         operator: "=",
-        intTwoPresent: false,
     }
 }
 
@@ -98,7 +96,7 @@ function addToObject() {
     userMath.operator = $(this).data('print');
     console.log(userMath);
     intString = '';
-    userMath.intTwoPresent = false
+
 }
 //equal should append mathObject.intTwo with new intString, then clear intString
 
@@ -117,7 +115,7 @@ function clearAll() {
         intOne: '',
         intTwo: '',
         operator: '=',
-        intTwoPresent: false,
+
         // total: 0,
     }
 }
